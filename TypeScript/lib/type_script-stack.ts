@@ -29,7 +29,7 @@ export class TypeScriptStack extends cdk.Stack {
     // Lambda function to fetch All the Books
     const listBooks = new aws_lambda.Function(this, 'listBooks',{
       runtime: aws_lambda.Runtime.NODEJS_16_X,
-      handler: 'index.GetHandler',
+      handler: 'get.GetHandler',
       code: aws_lambda.Code.fromAsset(path.join(__dirname, 'lambda_handler')),
       environment: {
         Books_Table_Name: tableBooks.tableName
@@ -83,5 +83,19 @@ export class TypeScriptStack extends cdk.Stack {
 
     tableBooks.grantReadWriteData(updateBooks)
     BookWithID.addMethod('PUT',new aws_apigateway.LambdaIntegration(updateBooks))
+
+
+    const deleteBooks = new aws_lambda.Function(this, 'deleteBooks',{
+      runtime: aws_lambda.Runtime.NODEJS_16_X,
+      handler: 'delete.DeleteHandler',
+      code: aws_lambda.Code.fromAsset(path.join(__dirname, 'lambda_handler')),
+      environment: {
+        Books_Table_Name: tableBooks.tableName
+      }
+    })
+
+    tableBooks.grantReadWriteData(deleteBooks)
+    BookWithID.addMethod('DELETE',new aws_apigateway.LambdaIntegration(deleteBooks))
+
   }
 }
