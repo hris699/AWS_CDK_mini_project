@@ -101,4 +101,3 @@ export class ResourceStack extends cdk.Stack {
 }
 
 
-module.exports = ResourceStack
