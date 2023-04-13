@@ -1,6 +1,6 @@
 import * as cdk from 'aws-cdk-lib';
 import { Construct } from 'constructs';
-
+import { aws_codepipeline } from 'aws-cdk-lib';
 import { Stage } from 'aws-cdk-lib';
 import { Stack } from 'aws-cdk-lib';
 import { pipelines } from 'aws-cdk-lib';
@@ -10,6 +10,8 @@ import { ResourceStack } from './resource_stack/resource_stack';
 
 
 // import * as sqs from 'aws-cdk-lib/aws-sqs';
+
+// testing for git merging
 
 export class DeployStage extends Stage {
   constructor(scope: Construct, id: string, props?: cdk.StageProps) {
