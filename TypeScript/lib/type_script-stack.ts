@@ -14,7 +14,7 @@ import { ResourceStack } from './resource_stack/resource_stack';
 export class DeployStage extends Stage {
   constructor(scope: Construct, id: string, props?: cdk.StageProps) {
     super(scope, id, props),
-      new ResourceStack(this, 'ResourceStack', { stackName: 'aws_resource_stack' });
+      new ResourceStack(this, 'ResourceStack', { stackName: 'awsResourceStack' });
   }
 
 }

@@ -3,7 +3,7 @@ import { Construct } from 'constructs';
 import { aws_apigateway } from 'aws-cdk-lib';
 import { aws_lambda } from 'aws-cdk-lib';
 import { aws_dynamodb } from 'aws-cdk-lib';
-import * as path from 'path';
+
 
 // import * as sqs from 'aws-cdk-lib/aws-sqs';
 
@@ -30,7 +30,7 @@ export class ResourceStack extends cdk.Stack {
     const listBooks = new aws_lambda.Function(this, 'listBooks',{
       runtime: aws_lambda.Runtime.NODEJS_16_X,
       handler: 'get.GetHandler',
-      code: aws_lambda.Code.fromAsset(path.join(__dirname, 'lambda_handler')),
+      code: aws_lambda.Code.fromAsset('../lambda_handler'),
       environment: {
         Books_Table_Name: tableBooks.tableName
       }
@@ -46,7 +46,7 @@ export class ResourceStack extends cdk.Stack {
     const postBooks = new aws_lambda.Function(this, 'postBooks',{
       runtime: aws_lambda.Runtime.NODEJS_16_X,
       handler: 'post.PostHandler',
-      code: aws_lambda.Code.fromAsset(path.join(__dirname, 'lambda_handler')),
+      code: aws_lambda.Code.fromAsset('../lambda_handler'),
       environment: {
         Books_Table_Name: tableBooks.tableName
       }
@@ -61,7 +61,7 @@ export class ResourceStack extends cdk.Stack {
     const BookById = new aws_lambda.Function(this, 'BookById',{
       runtime: aws_lambda.Runtime.NODEJS_16_X,
       handler: 'getById.GetByIdHandler',
-      code: aws_lambda.Code.fromAsset(path.join(__dirname, 'lambda_handler')),
+      code: aws_lambda.Code.fromAsset('../lambda_handler'),
       environment: {
         Books_Table_Name: tableBooks.tableName
       }
@@ -75,7 +75,7 @@ export class ResourceStack extends cdk.Stack {
     const updateBooks = new aws_lambda.Function(this, 'updateBooks',{
       runtime: aws_lambda.Runtime.NODEJS_16_X,
       handler: 'update.UpdateHandler',
-      code: aws_lambda.Code.fromAsset(path.join(__dirname, 'lambda_handler')),
+      code: aws_lambda.Code.fromAsset('../lambda_handler'),
       environment: {
         Books_Table_Name: tableBooks.tableName
       }
@@ -88,7 +88,7 @@ export class ResourceStack extends cdk.Stack {
     const deleteBooks = new aws_lambda.Function(this, 'deleteBooks',{
       runtime: aws_lambda.Runtime.NODEJS_16_X,
       handler: 'delete.DeleteHandler',
-      code: aws_lambda.Code.fromAsset(path.join(__dirname, 'lambda_handler')),
+      code: aws_lambda.Code.fromAsset('../lambda_handler'),
       environment: {
         Books_Table_Name: tableBooks.tableName
       }
