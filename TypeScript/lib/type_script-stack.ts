@@ -34,7 +34,7 @@ export class TypeScriptStack extends Stack {
 
   synth_step = new pipelines.ShellStep("Synth", {
     commands: [
-      'npm ci',
+      'npm install',
       'npm build',
       'npx cdk synth'
     ],
